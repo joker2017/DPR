@@ -132,7 +132,7 @@ class lightingNet(nn.Module):
         upFeat = upFeat.repeat((1,1,row, col))
         innerFeat[:,0:self.ncInput,:,:] = upFeat
         #print("innerFeat", innerFeat)
-        print("light", light)
+        #print("light", light)
         return innerFeat, light
 
 

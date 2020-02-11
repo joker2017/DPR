@@ -131,6 +131,8 @@ class lightingNet(nn.Module):
         upFeat = self.post_relu2(self.post_FC2(upFeat))
         upFeat = upFeat.repeat((1,1,row, col))
         innerFeat[:,0:self.ncInput,:,:] = upFeat
+        print("innerFeat", innerFeat)
+        print("light", light)
         return innerFeat, light
 
 

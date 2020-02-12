@@ -180,7 +180,7 @@ class HourglassNet(nn.Module):
 
         self.output = nn.Conv2d(self.ncPre, 1, kernel_size=1, stride=1, padding=0)
 
-    def forward(self, x, target_light, skip_count):
+    def forward(self, x, target_light, skip_count=0):
         feat = self.pre_conv(x)
         feat = F.relu(self.pre_bn(feat))
         # get the inner most features

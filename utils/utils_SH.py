@@ -66,6 +66,7 @@ def get_shading(normal, SH):
         SH: 9 x m vector
         return Nxm vector, where m is the number of returned images
     '''
+    print("shape normal and SH:", normal.shape, SH.shape)
     sh_basis = SH_basis(normal)
     shading = np.matmul(sh_basis, SH)
     #shading = np.matmul(np.reshape(sh_basis, (-1, 9)), SH)

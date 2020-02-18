@@ -14,6 +14,7 @@ import time
 
 
 def conv3X3(in_planes, out_planes, stride=1):
+    print("1")
     """3x3 convolution with padding"""
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
         padding=1, bias=False)
@@ -37,6 +38,7 @@ class BasicBlock(nn.Module):
         self.shortcuts = nn.Conv2d(inplanes, outplanes, kernel_size=1, stride=1, bias=False)
     
     def forward(self, x):
+        print("2")
         out = self.conv1(x)
         out = self.bn1(out)
         out = F.relu(out)
@@ -76,6 +78,7 @@ class HourglassBlock(nn.Module):
         self.low2 = BasicBlock(mid_plane, inplane, batchNorm_type=1)
 
     def forward(self, x, light, count, skip_count):
+        print("3")
         # we use count to indicate wich layer we are in
         # max_count indicates the from which layer, we would use skip connections
         out_upper = self.upper(x)
@@ -118,6 +121,7 @@ class lightingNet(nn.Module):
         self.post_relu2 = nn.ReLU()  # to be consistance with the original feature
 
     def forward(self, innerFeat, target_light, count, skip_count):
+        print("4")
         x = innerFeat[:,0:self.ncInput,:,:] # lighting feature
         _, _, row, col = x.shape
 
@@ -181,6 +185,7 @@ class HourglassNet(nn.Module):
         self.output = nn.Conv2d(self.ncPre, 1, kernel_size=1, stride=1, padding=0)
 
     def forward(self, x, target_light, skip_count=0):
+        print("5")
         feat = self.pre_conv(x)
         feat = F.relu(self.pre_bn(feat))
         # get the inner most features

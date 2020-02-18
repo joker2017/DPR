@@ -170,6 +170,7 @@ class HourglassNet(nn.Module):
         self.pre_bn = nn.BatchNorm2d(self.ncPre)
 
         self.light = lightingNet(self.ncLight, self.ncOutLight, 128)
+        '''
         self.HG0 = HourglassBlock(self.ncHG1, self.ncHG0, self.light)
         self.HG1 = HourglassBlock(self.ncHG2, self.ncHG1, self.HG0)
         self.HG2 = HourglassBlock(self.ncHG3, self.ncHG2, self.HG1)
@@ -183,7 +184,7 @@ class HourglassNet(nn.Module):
         self.bn_3 = nn.BatchNorm2d(self.ncPre)
 
         self.output = nn.Conv2d(self.ncPre, 1, kernel_size=1, stride=1, padding=0)
-
+        '''
     def forward(self, x, target_light, skip_count=0):
         print("5")
         feat = self.pre_conv(x)

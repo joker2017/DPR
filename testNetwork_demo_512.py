@@ -52,8 +52,9 @@ img = cv2.imread('data/obama.jpg')
 row, col, _ = img.shape
 img = cv2.resize(img, (512, 512))
 Lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-
+print("Lab.shape:", Lab.shape)
 inputL = Lab[:,:,0]
+print("inputL.shape:", inputL.shape)
 inputL = inputL.astype(np.float32)/255.0
 inputL = inputL.transpose((0,1))
 inputL = inputL[None,None,...]
